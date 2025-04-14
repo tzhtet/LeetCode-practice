@@ -1,4 +1,4 @@
-package com.dsa.practise.mathematics;
+package com.dsa.practise.array;
 
 public class MoveZeros {
 	
