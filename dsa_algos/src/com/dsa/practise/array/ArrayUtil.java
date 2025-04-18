@@ -15,8 +15,7 @@ public class ArrayUtil {
 		for(int i = 0; i < arr.length; i ++) {
 			temp[i] = arr[i];
 		}	
-		arr = temp;
-		return arr;
+		return temp;
 	}
 	
 	
