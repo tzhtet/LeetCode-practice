@@ -23,7 +23,14 @@ public class FirstUniqueChar {
             }
         }
 
-        return null; 
+        return null; 	
+	}
+	
+	
+	public static void main(String[] args) {
+		String test = "swiss";
+		Character result = findFirstNonRepeating(test);
+		System.out.println("First non-repeating character:" + result);
 	}
 
 }
