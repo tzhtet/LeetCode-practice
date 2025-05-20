@@ -4,7 +4,7 @@ public class SinglyLinkedList {
 
 	private ListNode head;
 
-	private static class ListNode {
+	public static class ListNode {
 		private int data;
 		private ListNode next;
 
