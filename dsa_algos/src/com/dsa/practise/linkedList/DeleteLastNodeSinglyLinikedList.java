@@ -28,8 +28,6 @@ public class DeleteLastNodeSinglyLinikedList {
 	    current.next = newNode;
 	}
 
-	
-	
 	public void display() {
 		ListNode current = head;
 		while(current != null) {
@@ -65,6 +63,8 @@ public class DeleteLastNodeSinglyLinikedList {
 		sll.display();
 		
 		System.out.println(sll.deleteLast().data);
+		System.out.println(sll.deleteLast().data);
+
 		sll.display();
 		
 	}
