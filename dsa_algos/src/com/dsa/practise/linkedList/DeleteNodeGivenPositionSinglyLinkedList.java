@@ -21,6 +21,7 @@ public class DeleteNodeGivenPositionSinglyLinkedList {
 			System.out.print(current.data + " -----> ");
 			current = current.next;
 		}
+		System.out.println();
 	}
 	
 	private void insertLast(int value) {
@@ -53,6 +54,14 @@ public class DeleteNodeGivenPositionSinglyLinkedList {
 		
 	}
 	public static void main(String[] args) {
+		DeleteNodeGivenPositionSinglyLinkedList del = new DeleteNodeGivenPositionSinglyLinkedList();
+		del.insertLast(30);
+		del.insertLast(90);
+		del.insertLast(50);
+		del.insertLast(70);
+		del.display();
+		del.delete(2);
+		del.display();
 		
 	}
 
