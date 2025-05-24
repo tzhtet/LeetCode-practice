@@ -14,8 +14,8 @@ public class ReverseSinglyLinkedList {
 		}
 	}
 	
-	public void display() {
-		ListNode current = head;
+	public void display(ListNode value) {
+		ListNode current = value;
 		while (current != null) {
 			System.out.print(current.data + "---> ");
 			current = current.next;
@@ -43,6 +43,21 @@ public class ReverseSinglyLinkedList {
 	}
 	
 	public static void main(String[] args) {
+		ListNode head = new ListNode(10);
+		ListNode second = new ListNode(8);
+		ListNode third = new ListNode(1);
+		ListNode fourth = new ListNode(11);
+		
+		head.next = second;
+		second.next = third;
+		third.next = fourth;
+		
+		ReverseSinglyLinkedList rv = new ReverseSinglyLinkedList();
+		rv.display(head);
+		
+		ListNode reverseListHead = rv.reverse(head);
+		rv.display(reverseListHead);
+		
 		
 	}
 	
