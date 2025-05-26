@@ -39,7 +39,15 @@ public class NthNodeFromTheEnd {
 		int count = 0;
 		
 		while(count < n) {
+			if(refPtr == null) {
+				throw new IllegalArgumentException(n + " is greather than the number of nodes in list");
+			}
 			refPtr = refPtr.next;
+			count++;
+		}
+		
+		while(refPtr != null) {
+			
 		}
 		return refPtr;
 	}
