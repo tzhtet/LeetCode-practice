@@ -24,7 +24,7 @@ public class NthNodeFromTheEnd {
 		System.out.println();
 	}
 	
-	public ListNode getNthNodeFromEnd(int n) {
+	private ListNode getNthNodeFromEnd(int n) {
 		if(head == null) {
 			return null;
 		}
@@ -47,13 +47,31 @@ public class NthNodeFromTheEnd {
 		}
 		
 		while(refPtr != null) {
-			
+			refPtr = refPtr.next;
+			count++;
 		}
-		return refPtr;
+		return mainPtr;
+	}
+	
+	private void insertAtBeginning(int value) {
+		ListNode newNode = new ListNode(value);
+		newNode.next = head;
+		head = newNode;
 	}
 	
 	public static void main(String[] args) {
+		NthNodeFromTheEnd nth = new NthNodeFromTheEnd();
+		nth.insertAtBeginning(10);
+		nth.insertAtBeginning(90);
+		nth.insertAtBeginning(70);
+		nth.insertAtBeginning(40);
+		nth.insertAtBeginning(30);
+		nth.insertAtBeginning(45);
 		
+		nth.display();
+		
+		ListNode result = nth.getNthNodeFromEnd(2);
+		System.out.println("Nth node from end is - " + result.data);
 	}
 
 }
