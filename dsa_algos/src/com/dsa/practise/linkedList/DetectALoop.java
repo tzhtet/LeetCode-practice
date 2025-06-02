@@ -2,6 +2,7 @@ package com.dsa.practise.linkedList;
 
 public class DetectALoop {
 
+	private ListNode head;
 	
 	private class ListNode {
 		private int data;
@@ -12,4 +13,29 @@ public class DetectALoop {
 			this.next = null;
 		}
 	}
+	
+	private void insertAtBeginning(int data) {
+		ListNode newNode = new ListNode(data);
+		newNode.next = head;
+		head = newNode;
+	}
+	
+	private void printLinkedList() {
+		if(head == null) {
+			System.out.println("null");
+		}
+		
+		ListNode current = head;
+		while(null != current) {
+			System.out.print(current.data + " ------> ");
+			current = current.next;
+		}
+		System.out.println("null");
+	}
+	
+	public static void main(String[] args) {
+		
+	}
+	
+	
 }
