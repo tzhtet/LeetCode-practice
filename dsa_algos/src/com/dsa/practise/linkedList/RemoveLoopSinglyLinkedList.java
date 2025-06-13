@@ -25,6 +25,24 @@ public class RemoveLoopSinglyLinkedList {
 		System.out.println();
 	}
 	
+	private ListNode getStartingNode(ListNode slowPtr) {
+		ListNode temp = head;
+		while(temp != slowPtr) {
+			temp = temp.next;
+			slowPtr = slowPtr.next;
+		}
+		return temp;
+	}
+	private void removeLoop(ListNode slowPtr) {
+		ListNode temp = head;
+		while(temp.next != slowPtr.next) {
+			temp = temp.next;
+			slowPtr = temp.next;
+			slowPtr = slowPtr.next;
+		}
+		slowPtr.next = null;
+	}
+	
 	private void createALoopInLinkedList() {
 		ListNode first = new ListNode(1);
 		ListNode second = new ListNode(2);
