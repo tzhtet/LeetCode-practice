@@ -43,6 +43,21 @@ public class RemoveLoopSinglyLinkedList {
 		slowPtr.next = null;
 	}
 	
+	private boolean containsLoop() {
+		ListNode fastPtr = head;
+		ListNode slowPtr = head;
+		
+		while(fastPtr != null && fastPtr.next != null) {
+			fastPtr = fastPtr.next.next;
+			slowPtr = slowPtr.next;
+		}
+		
+		if(fastPtr == slowPtr) {
+			return true;
+		}
+		return false;
+	}
+	
 	private void createALoopInLinkedList() {
 		ListNode first = new ListNode(1);
 		ListNode second = new ListNode(2);
@@ -63,6 +78,10 @@ public class RemoveLoopSinglyLinkedList {
 	public static void main(String[] args) {
 		RemoveLoopSinglyLinkedList rm = new RemoveLoopSinglyLinkedList();
 		rm.createALoopInLinkedList();
+		System.out.println(rm.containsLoop());
+		System.out.println(rm.getStartingNode(null));
+		rm.containsLoop();
+		rm.display();
 		
 	}
 }
