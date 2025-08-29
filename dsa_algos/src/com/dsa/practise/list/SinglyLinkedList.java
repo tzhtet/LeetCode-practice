@@ -102,5 +102,122 @@ public class SinglyLinkedList {
 		}
 		
 	}
+	
+	public ListNode deleteLast() {
+		if(head == null) {
+			return head;
+		}
+		
+		if(head.next == null) {
+			ListNode temp = head;
+			head = head.next;
+			return temp;
+		}
+		
+		ListNode current = head;
+		ListNode previous = null;
+		
+		while(current.next != null) {
+			previous = current;
+			current = current.next;
+		}
+		previous.next = null;
+		return current;
+	}
+	
+	public boolean find(int searchKey) {
+		if(head == null) {
+			return false;
+		}
+		ListNode current = head;
+		while(current != null) {
+			if(current.data == searchKey) {
+				return true;
+			}
+			current = current.next;
+		}
+		return false;
+	}
+	
+	public ListNode reverse() {
+		if(head == null) {
+			return null;
+		}
+		ListNode current = head;
+		ListNode previous = null;
+		ListNode next = null;
+		
+		while(current != null) {
+			next = current.next;
+			current.next = previous;
+			previous = current;
+			current = next;
+		}
+		return previous;
+	}
+	
+	public ListNode getMiddleNode() {
+		if(head == null) {
+			return null;
+		}
+		
+		ListNode slowPtr = head;
+		ListNode fastPtr = head;
+		
+		while(fastPtr != null && fastPtr.next != null) {
+			slowPtr = slowPtr.next;
+			fastPtr = fastPtr.next.next;
+		}
+		return slowPtr;
+	}
+	
+	public ListNode getNthNodeFromEnd(int n) {
+		if(head == null) {
+			return null;
+		}
+		
+		if(n <= 0) {
+			throw new IllegalArgumentException("Invalid value: n = " + n);
+		}
+		
+		ListNode mainPtr = head;
+		ListNode refPtr = head;
+		
+		int count = 0;
+		
+		while(count < 0) {
+			if(refPtr == null) {
+				throw new IllegalArgumentException(n + " is greather than the number of nodes in list");
+			}
+			refPtr = refPtr.next;
+			count++;
+		}
+		
+		while(refPtr != null) {
+			refPtr = refPtr.next;
+			mainPtr = mainPtr.next;
+		}
+		return mainPtr;
+	}
+	
+	public ListNode insertInSortedList(int value) {
+		ListNode newNode = new ListNode(value);
+		
+		if(head == null) {
+			return newNode;
+		}
+		
+		ListNode current = head;
+		ListNode temp = null;
+		
+		while(current != null && current.data < newNode.data) {
+			temp = current;
+			current = current.next;
+		}
+		
+		newNode.next = current;
+		temp.next = newNode;
+		return head;
+	}
 
 }
