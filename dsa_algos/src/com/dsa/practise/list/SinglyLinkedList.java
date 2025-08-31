@@ -239,5 +239,67 @@ public class SinglyLinkedList {
 		}
 		temp.next = current.next;
 	}
+	
+	public boolean containsLoop() {
+		ListNode fastPtr = head;
+		ListNode slowPtr = head;
+		
+		while(fastPtr != null && fastPtr.next != null) {
+		  fastPtr = fastPtr.next.next;
+		  slowPtr = slowPtr.next;
+		  
+		  if(fastPtr == slowPtr) {
+			  return true;
+		  }
+		}
+		  return false;
+	}
+	
+	public ListNode startNodeInALoop() {
+		ListNode fastPtr = head;
+		ListNode slowPtr = head;
+		
+		while(fastPtr != null && fastPtr.next != null) {
+			fastPtr = fastPtr.next.next;
+			slowPtr = slowPtr.next;
+			
+			if(fastPtr == slowPtr) {
+				return getStartingNode(slowPtr);
+			}
+		}
+		return slowPtr;
+	}
+	
+	private ListNode getStartingNode(ListNode slowPtr) {
+		ListNode temp = head;
+		while(temp != slowPtr) {
+			temp = temp.next;
+			slowPtr = slowPtr.next;
+		}
+		return temp;
+	}
+	
+	public void removeLoop() {
+		ListNode fastPtr = head;
+		ListNode slowPtr = head;
+		
+		while(fastPtr != null && fastPtr.next != null) {
+			fastPtr = fastPtr.next.next;
+			slowPtr = slowPtr.next;
+			
+			if(fastPtr == slowPtr) {
+				removeLoop(slowPtr);
+			}
+		}
+	}
+	
+	private void removeLoop(ListNode slowPtr) {
+		ListNode temp = head;
+		while(temp.next != slowPtr) {
+			temp = temp.next;
+			slowPtr = slowPtr.next;
+		}
+		slowPtr.next = null;
+	}
 
 }
