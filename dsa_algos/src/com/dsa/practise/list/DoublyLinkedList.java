@@ -1,5 +1,7 @@
 package com.dsa.practise.list;
 
+import java.util.NoSuchElementException;
+
 public class DoublyLinkedList {
 	
 	
@@ -29,6 +31,104 @@ public class DoublyLinkedList {
 	
 	public int length() {
 		return length;
+	}
+	
+	public void displayForward() {
+		if(head == null) {
+			return;
+		}
+		
+		ListNode temp = head;
+		while(temp != null) {
+			System.out.println(temp.data + " ---> ");
+			temp = temp.next;
+		}
+		System.out.println("null");
+	}
+	
+	public void displayBackward() {
+		if(head == null) {
+			return;
+		}
+		
+		ListNode temp = tail;
+		while(temp != null){
+			System.out.println(temp.data + " ---> ");
+			temp = temp.previous;
+		}
+		System.out.println("null");
+	}
+	
+	public void insertFirst(int value) {
+		ListNode newNode = new ListNode(value);
+		if(isEmpty()) {
+			tail = newNode;
+		}else {
+			head.previous = newNode;
+		}
+		newNode.next = head;
+		head = newNode;
+		length++;
+	}
+	
+	public void insertEnd(int value) {
+		ListNode newNode = new ListNode(value);
+		if(isEmpty()) {
+			head = newNode;
+		}else {
+			tail.next = head;
+			newNode.previous = tail;
+		}
+		tail = newNode;
+		length++;
+		
+	}
+	
+	public ListNode deleteFirst() {
+		if(isEmpty()) {
+			throw new NoSuchElementException();
+		}
+		ListNode temp = head;
+		if(head == tail) {
+			tail = null;
+		}else {
+			head.next.previous = null;
+		}
+		head = head.next;
+		temp.next = null;
+		length --;
+		return temp;
+	}
+	
+	public ListNode deleteLast() {
+		if(isEmpty()) {
+			throw new NoSuchElementException();
+		}
+		ListNode temp = tail;
+		if(head == tail) {
+			head = null;
+		}else {
+			tail.next.previous = null;
+		}
+		tail = tail.previous;
+		temp.next = null;
+		length --;
+		return temp;
+	}
+
+	public static void main(String[] args) {
+		DoublyLinkedList dll = new DoublyLinkedList();
+		dll.insertEnd(1);
+		dll.insertEnd(2);
+		dll.insertEnd(3);
+
+		dll.displayForward();
+
+		dll.deleteLast();
+		dll.deleteLast();
+
+		dll.displayForward();
+
 	}
 
 }
