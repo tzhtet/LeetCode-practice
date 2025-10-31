@@ -1,5 +1,7 @@
 package com.dsa.practise.list;
 
+import java.util.NoSuchElementException;
+
 public class CircularLinkedList {
 
 	private ListNode last;
@@ -41,8 +43,60 @@ public class CircularLinkedList {
 	
 	public void insertFirst(int data) {
 		ListNode temp = new ListNode(data);
-		if(temp != null) {
-			
+		if(last != null) {
+			last = temp;
+		}else {
+			temp.next = last.next;
 		}
+		last.next = temp;
+		length++;
+	}
+	
+	public void insertLast(int data) {
+		ListNode temp = new ListNode(data);
+		if(last == null) {
+			last = temp;
+			last.next = last;
+		}else {
+			temp.next = last.next;
+			last.next = temp;
+			last = temp;
+		}
+		length++;
+	}
+	
+	public ListNode removeFirst() {
+		if(isEmpty()) {
+			throw new NoSuchElementException("Circular Singly Linked List is already empty");
+		}
+		
+		ListNode temp = last.next;
+		if(last.next == last) {
+			last = null;
+		}else {
+			last.next = temp.next;
+		}
+		temp.next = null;
+		length--;
+		return temp;
+	}
+	
+	public void createCircularLinkedList() {
+		ListNode first = new ListNode(1);
+	      ListNode second = new ListNode(5);
+	      ListNode third = new ListNode(10);
+	      ListNode fourth = new ListNode(15);
+	      
+	      first.next = second;
+	      second.next = third;
+	      third.next = fourth;
+	      fourth.next = first;
+	      
+	      last = fourth;
+	}
+	public static void main(String[] args) {
+		CircularLinkedList cll = new CircularLinkedList();
+		cll.createCircularLinkedList();
+		cll.display();
 	}
 }
