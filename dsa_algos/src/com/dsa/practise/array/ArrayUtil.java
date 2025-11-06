@@ -46,9 +46,15 @@ public class ArrayUtil {
 		return temp;
 	}
 	
+	
+	public static int[] twoSum(int[] numbers, int target) {
+		int[] result = new int[2];
+		return numbers;
+		
+	}
+	
 	public void arrayDemo() {
 		int[] arr = { 1, 3, 6, 8, 9, 5, 2, 4, 7, 12 };
-		System.out.println(findMinium(arr));
 	}
 	
 	public static void main(String[] args) {
@@ -66,6 +72,7 @@ public class ArrayUtil {
 		}
 		
 		System.out.println();
+		
 		/*
 		 * ArrayUtil arrUtil = new ArrayUtil(); arrUtil.arrayDemo();
 		 */
